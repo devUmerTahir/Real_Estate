@@ -1,0 +1,40 @@
+<odoo>
+    <data>
+        <!-- Record 1 -->
+        <record id="estate_property_1" model="estate.property">
+            <field name="name">Property 1</field>
+            <field name="description">This is the first property description.</field>
+            <field name="postcode">12345</field>
+            <field name="date_availability">2023-08-01</field>
+            <field name="expected_price">250000.0</field>
+            <field name="selling_price">280000.0</field>
+            <field name="bedrooms">3</field>
+            <field name="living_area">150</field>
+            <field name="facades">4</field>
+            <field name="garage">True</field>
+            <field name="garden">False</field>
+            <field name="garden_area">0</field>
+            <field name="garden_orientation">north</field>
+        </record>
+
+        <!-- Record 2 -->
+        <record id="estate_property_2" model="estate.property">
+            <field name="name">Property 2</field>
+            <field name="description">This is the second property description.</field>
+            <field name="postcode">67890</field>
+            <field name="date_availability">2023-09-01</field>
+            <field name="expected_price">180000.0</field>
+            <field name="selling_price">195000.0</field>
+            <field name="bedrooms">2</field>
+            <field name="living_area">100</field>
+            <field name="facades">2</field>
+            <field name="garage">False</field>
+            <field name="garden">True</field>
+            <field name="garden_area">50</field>
+            <field name="garden_orientation">south</field>
+        </record>
+
+        <!-- Add more records as needed -->
+
+    </data>
+</odoo>

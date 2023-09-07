@@ -1,0 +1,91 @@
+<odoo>
+    <data>
+        <!-- Define the tree view for estate.property.type -->
+        <record id="view_estate_property_type_tree" model="ir.ui.view">
+            <field name="name">estate.property.type.tree</field>
+            <field name="model">estate.property.type</field>
+            <field name="arch" type="xml">
+                <tree string="Real Estate Property Types">
+                    <field name="name"/>
+                    <field name="expected_price"/>
+                    <field name="bedrooms"/>
+                    <field name="garage"/>
+                    <field name="garden"/>
+                    <field name="total_area" string="Total Area"/>
+                    <field name="best_offer"/>
+                     <button name="action_cancel" string="Cancel" states="new,offer_received" type="object"/>
+                    <button name="action_set_sold" string="Sold" states="offer_accepted" type="object"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Define the form view for estate.property.type -->
+        <record id="view_estate_property_type_form" model="ir.ui.view">
+            <field name="name">estate.property.type.form</field>
+            <field name="model">estate.property.type</field>
+            <field name="arch" type="xml">
+                <form string="Real Estate Property Type">
+                    <sheet>
+                        <group>
+                        <group>
+                            <field name="name"/>
+                             <field name="date_availability"/>
+                            <field name="state"/>
+                        </group>
+                         <group>
+                                <field name="expected_price"/>
+                                <field name="selling_price"/>
+                                <field name="bedrooms"/>
+                                <field name="living_area"/>
+                                <field name="facades"/>
+                                <field name="garage"/>
+                                <field name="garden"/>
+                                <field name="garden_area"/>
+                                <field name="garden_orientation"/>
+                                <field name="total_area" readonly="1"/>
+                                <field name="best_offer" readonly="1"/>
+                            </group>
+                        <group/>
+                         <notebook>
+                            <page string="Description">
+                                <field name="description"/>
+                            </page>
+                            <page string="Offers">
+                                <field name="offer_ids" widget="one2many_list"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+         <!-- Search View -->
+        <record id="view_estate_property_search" model="ir.ui.view">
+            <field name="name">estate.property.search</field>
+            <field name="model">estate.property</field>
+            <field name="arch" type="xml">
+                <search>
+                    <filter string="Available Properties" name="available_properties" domain="[('state', 'in', ['New', 'Offer Received'])]"/>
+                    <group expand="0" string="Group by Postcode">
+                        <filter name="group_by_postcode" context="{'group_by': 'postcode'}"/>
+                    </group>
+                    <field name="name" string="Property Name"/>
+                    <field name="postcode" string="Postcode"/>
+                    <field name="date_availability" string="Availability Date"/>
+                    <field name="expected_price" string="Expected Price"/>
+                </search>
+            </field>
+        </record>
+
+        <!-- Define the menu and action for estate.property.type -->
+        <menuitem id="menu_estate_property_type" name="Real Estate Property Types" parent="menu_estate_properties"/>
+        <menuitem id="menu_estate_property_type_list" name="Property Types" parent="menu_estate_property_type" action="action_estate_property_type"/>
+
+        <record id="action_estate_property_type" model="ir.actions.act_window">
+            <field name="name">Property Types</field>
+            <field name="res_model">estate.property.type</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+</odoo>

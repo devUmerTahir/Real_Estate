@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+
+                <!-- Define the tree view for the estate.property model -->
+        <record id="view_estate_property_tree" model="ir.ui.view">
+            <field name="name">estate.property.tree</field>
+            <field name="model">estate.property</field>
+            <field name="arch" type="xml">
+                <tree string="Estate Properties">
+                    <field name="name"/>
+                    <field name="postcode"/>
+                    <field name="bedrooms"/>
+                    <field name="living_area" string="Living Area (sqm)"/>
+                    <field name="expected_price"/>
+                    <field name="selling_price"/>
+                    <field name="date_availability" string="Available From"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <!-- Define the form view for the estate.property model -->
+        <record id="view_estate_property_form" model="ir.ui.view">
+            <field name="name">estate.property.form</field>
+            <field name="model">estate.property</field>
+            <field name="arch" type="xml">
+                <form string="My new house">
+                    <header>
+        <!-- Add 'Cancel' and 'Sold' buttons here -->
+        <button name="action_cancel" string="Cancel" type="object" class="oe_highlight"/>
+        <button name="action_sold" string="Sold" type="object" class="oe_highlight"/>
+    </header>
+                    <sheet>
+                        <group>
+                            <field name="postcode" placeholder="1000"/>
+                            <field name="expected_price" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                        </group>
+                        <group>
+                            <field name="date_availability" widget="date"/>
+                            <field name="selling_price" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                        </group>
+                        <notebook>
+                            <page string="Description">
+                                <field name="description" placeholder="Description when duplicated, status and date are not copied"/>
+                                <field name="bedrooms" placeholder="4"/>
+                                <field name="living_area" placeholder="250"/>
+                                <field name="facades" placeholder="4"/>
+                                <field name="garage"/>
+                                <field name="garden"/>
+                                <field name="garden_area" placeholder="1,500"/>
+                                <field name="garden_orientation" placeholder="North"/>
+                            </page>
+                             <page string="Buyer &amp; Salesperson">
+                        <group>
+                            <field name="buyer_id"/>
+                            <field name="salesperson_id"/>
+                        </group>
+                    </page>
+                            <page string="Tags">
+                     <group>
+                        <field name="tag_ids" widget="many2many_tags"/>
+                     </group>
+                            </page>
+                            <page string="Property Offers">
+                        <field name="offer_ids" widget="one2many_list"/>
+                            </page>
+                            <page string="Computed Fields">
+                        <group>
+                            <field name="total_area"/>
+                            <field name="best_price"/>
+                        </group>
+                    </page>
+
+
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+         <!-- Define the search view for the estate.property model -->
+
+        <record id="view_estate_property_search" model="ir.ui.view">
+            <field name="name">estate.property.search</field>
+            <field name="model">estate.property</field>
+            <field name="arch" type="xml">
+                <search string="Search Estate Properties">
+                    <field name="name"/>
+                    <field name="postcode" group="1"/>
+                    <field name="bedrooms"/>
+                    <field name="living_area"/>
+                    <field name="expected_price"/>
+                    <field name="selling_price"/>
+                    <field name="date_availability"/>
+                    <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
+                    <filter string="Available Properties" name="available" domain="[('state', 'in', ('new', 'offer_received'))]"/>
+
+                </search>
+            </field>
+        </record>
+
+
+
+
+
+        <!-- Define the action for estate.property model -->
+        <record id="action_estate_property" model="ir.actions.act_window">
+            <field name="name">Estate Properties</field>
+            <field name="res_model">estate.property</field>
+            <field name="view_mode">tree,form</field>
+            <!-- You can add more configuration options here if needed -->
+        </record>
+
+
+
+
+
+
+    </data>
+</odoo>

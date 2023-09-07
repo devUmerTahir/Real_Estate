@@ -1,0 +1,12 @@
+<odoo>
+    <data>
+        <!-- Define the root menu "Real-Estate" -->
+        <menuitem id="menu_real_estate" name="Real-Estate" sequence="10"/>
+
+        <!-- Define the first-level menu "Advertisement" under "Real-Estate" -->
+        <menuitem id="menu_advertisement" name="Advertisement" parent="menu_real_estate" sequence="5"/>
+
+        <!-- Define the action menu "Properties" under "Advertisement" -->
+        <menuitem id="menu_properties" name="Properties" parent="menu_advertisement" action="action_estate_property" sequence="1"/>
+    </data>
+</odoo>

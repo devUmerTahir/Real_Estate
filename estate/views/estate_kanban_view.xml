@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Define the kanban view for the estate.property model -->
+        <record id="view_estate_property_kanban" model="ir.ui.view">
+            <field name="name">estate.property.kanban</field>
+            <field name="model">estate.property</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <!-- Define the kanban card structure -->
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_card">
+                                <div class="oe_kanban_card_inner">
+                                    <div class="oe_kanban_card_header">
+                                        <span t-field="record.name.value"></span>
+                                    </div>
+                                    <div class="oe_kanban_card_body">
+                                        <!-- Add fields to display on the kanban card -->
+                                        <div class="oe_kanban_card_field">
+                                            <span t-field="record.expected_price.value"></span>
+                                        </div>
+                                        <div class="oe_kanban_card_field">
+                                            <span t-field="record.bedrooms.value"></span>
+                                        </div>
+                                        <!-- Add more fields as needed -->
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+    </data>
+</odoo>
