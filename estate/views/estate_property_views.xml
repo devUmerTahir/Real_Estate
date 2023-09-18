@@ -3,7 +3,7 @@
     <data>
 
 
-                <!-- Define the tree view for the estate.property model -->
+                <!--tree view for the estate.property model -->
         <record id="view_estate_property_tree" model="ir.ui.view">
             <field name="name">estate.property.tree</field>
             <field name="model">estate.property</field>
@@ -21,14 +21,14 @@
         </record>
 
 
-        <!-- Define the form view for the estate.property model -->
+        <!-- form view for the estate.property model -->
         <record id="view_estate_property_form" model="ir.ui.view">
             <field name="name">estate.property.form</field>
             <field name="model">estate.property</field>
             <field name="arch" type="xml">
                 <form string="My new house">
                     <header>
-        <!-- Add 'Cancel' and 'Sold' buttons here -->
+       
         <button name="action_cancel" string="Cancel" type="object" class="oe_highlight"/>
         <button name="action_sold" string="Sold" type="object" class="oe_highlight"/>
     </header>
@@ -81,7 +81,7 @@
         </record>
 
 
-         <!-- Define the search view for the estate.property model -->
+         <!-- search view for the estate.property model -->
 
         <record id="view_estate_property_search" model="ir.ui.view">
             <field name="name">estate.property.search</field>
@@ -106,12 +106,11 @@
 
 
 
-        <!-- Define the action for estate.property model -->
+        <!-- action for estate.property model -->
         <record id="action_estate_property" model="ir.actions.act_window">
             <field name="name">Estate Properties</field>
             <field name="res_model">estate.property</field>
             <field name="view_mode">tree,form</field>
-            <!-- You can add more configuration options here if needed -->
         </record>
 
 
